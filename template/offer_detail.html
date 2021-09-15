@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Offer {{product.title}}</title>
+</head>
+<body>
+    <img src="{{product.image.url}}" alt="{{product.title}}">
+    <h1>{{product.title}}</h1>
+    <p>{{product.desc}}</p>
+    <br>
+    <br>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        <label>Oqim nomini kiriting</label><br>
+        <input type="text" placeholder="Kanal nomi, obyekt" name='offername'>
+        <input type="submit" value="Yuborish">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </form>
+</body>
+</html>
