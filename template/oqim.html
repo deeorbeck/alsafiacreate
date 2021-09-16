@@ -1,0 +1,37 @@
+{% extends 'ishxonatemplate.html'%}
+<title>{% block title%}Oqimlar{% endblock title%}</title>
+{% block content%}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script>
+   function myFunction() {
+  /* Get the text field */
+  var copyText = document.getElementById("myInput");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+   /* Copy the text inside the text field */
+  navigator.clipboard.writeText(copyText.value);
+
+  /* Alert the copied text */
+  alert("Copied the text: " + copyText.value);
+}
+</script>
+<div class="container">
+    <div class="row">
+        {% for oqim in Oqimlar%}
+        <div class="col-md-3">
+                        <div class="card">
+                            <p>{{oqim.offer_name}}</p> <span><a style="font-size: 50px;" href="{% url 'blog:oqimlar'%}?oqim={{oqim.db_link}}">&#128465;</a></span>
+                            <p>{{oqim.product.title}}</p>
+                            <input type="text" value="http://127.0.0.1:8000/p/{{oqim.db_link}}/" id="myInput">
+                            <button onclick="myFunction()">Copy text</button>
+                            <a href="tg://resolve?domain=projectestbot&start={{oqim.db_link}}"  class="btn btn-outline"><i class="fa fa-telegram" style="color: #2196F3FF"></i></a>
+                        </div>
+        </div>
+        {%endfor %}
+    </div>
+</div>
+
+{% endblock content %}

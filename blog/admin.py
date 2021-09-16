@@ -6,7 +6,8 @@ from .models import (
     Product,
     Offer,
     Order,
-    Profile
+    Profile,
+    News
 )
 
 
@@ -19,5 +20,6 @@ admin.site.register(Category)
 admin.site.register(Brand)
 admin.site.register(Product)
 admin.site.register(Offer)
+admin.site.register(News)
 admin.site.register(Order, OrdersAdmin)
 admin.site.register(Profile, ProfileAdmin)

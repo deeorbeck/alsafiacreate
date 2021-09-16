@@ -1,0 +1,22 @@
+{% extends 'ishxonatemplate.html'%}
+<title>{% block title%}Offers{% endblock title%}</title>
+{% block content%}
+<div class="container">
+    <div class="row">
+        {% for offer in Offers%}
+        <div class="col-md-3">
+                <div class="col-md-6">
+                      <img width="300px" height="200px;" style="object-fit:cover; border-radius:50%;" src="{{offer.image.url}}"/>
+                </div>
+                <div class="col-md-6">
+                        <div class="card">
+                            <p>{{offer.title}}</p>
+                            <p>{{offer.price}}/{{offer.payment}}</p>
+                        </div>
+                </div>
+        </div>
+        {%endfor %}
+    </div>
+</div>
+{% endblock content %}
+

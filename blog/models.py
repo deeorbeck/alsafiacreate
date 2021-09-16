@@ -46,6 +46,7 @@ class Order(models.Model):
     tel = models.CharField(max_length=30)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     product_quantity = models.PositiveIntegerField(verbose_name='Mahsulot soni' , default=0)
+
     vendor = models.ForeignKey(User, on_delete=models.CASCADE)
     complete = models.BooleanField(verbose_name="Sotildi", default=False, help_text="Sotilgan bo'lsa belgilang!!!")
     def __str__(self):
@@ -58,4 +59,8 @@ class Profile(models.Model):
     phone_number = models.CharField(max_length=13, verbose_name="Telefon raqam",null=True, blank=True)
     income = models.PositiveBigIntegerField(verbose_name="Daromad", null=True, blank=True)
     hold = models.PositiveBigIntegerField(verbose_name="Hold", null=True, blank=True)
-
+class News(models.Model):
+    theme = models.CharField(max_length=200, verbose_name="Mavzu")
+    description = models.TextField(verbose_name="Sharx")
+    def __str__(self):
+        return self.theme

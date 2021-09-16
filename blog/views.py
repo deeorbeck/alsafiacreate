@@ -52,7 +52,7 @@ def loginPage(request):
                 Profile.objects.get(user=request.user)
             except:
                 Profile(user=request.user).save()
-            return redirect('/')
+            return redirect('blog:ishxona')
         else:
             messages.info(request, 'Username yoki Parol xato')
 
@@ -120,6 +120,33 @@ def user_info(request, username):
     data['orders'] = orders_
     data['sold'] = sold_
     return HttpResponse(f"{data}")
+@login_required(login_url='blog:login')
+def offerallproducts(request):
+    product = Product.objects.all()
+    context = {
+        'Offers':product,
+        'Products':len(product),
+        'User': Profile.objects.get(user=request.user)
+
+    }
+    return render(request, 'offers.html', context)
+@login_required(login_url='blog:login')
+def oqimpage(request):
+
+    context = {
+        "Oqimlar": Offer.objects.filter(vendor=request.user),
+        'Products':len(Product.objects.all()),
+        'User': Profile.objects.get(user=request.user),
+
+    }
+    if request.GET:
+        offer = request.GET['oqim']
+        Offer.objects.filter(db_link=offer).delete()
+        # pRodiel = Profile.objects.get(user=request.user)
+        # pRodiel.income += balans
+        # pRodiel.save()
+        return redirect('blog:oqimlar')
+    return render(request, 'oqim.html', context)
 @login_required(login_url='blog:login')
 def profile(request):
     contex = {
@@ -201,3 +228,27 @@ def balansPage(request):
 
     }
     return render(request, 'balans.html', contex)
+def newPage(request):
+    products_len = len(Product.objects.all())
+    user_ = Profile.objects.get(user=request.user)
+    news = News.objects.all()
+    contex = {
+        "Products":products_len,
+        'User':user_,
+        "News":news
+
+    }
+    return render(request, 'news.html', contex)
+# def statistikaPage(request):
+#     products_len = len(Product.objects.all())
+#     user_ = Profile.objects.get(user=request.user)
+#     sold_orders = Order.objects.filter(complete=True)
+#     context = {
+#         "Products":products_len,
+#         'User':user_,
+#         "Sotilgsnlar"
+#
+#
+#
+#     }
+#     return render(request, 'statistika.html', context)

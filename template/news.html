@@ -1,0 +1,12 @@
+{% extends 'ishxonatemplate.html'%}
+<title>{% block title%}News{% endblock title%}</title>
+{% block content%}
+<div class="row">
+    {% for new in News%}
+  <div class="col-md-3" style="border: 1px dashed #666">
+      {{new.theme}}<hr>
+      {{new.description}}
+  </div>
+    {% endfor %}
+</div>
+{% endblock content %}
