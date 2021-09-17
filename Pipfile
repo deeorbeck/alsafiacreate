@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 dj-static = "*"
+django-mathfilters = "*"
+django = "==3.1.7"
 
 [dev-packages]
 

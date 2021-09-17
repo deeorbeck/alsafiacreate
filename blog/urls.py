@@ -18,7 +18,8 @@ urlpatterns = [
     path('workdesk/', ishxonaPage, name='ishxona'),
     path('oqimlar/', oqimpage, name='oqimlar'),
     path('balans/', balansPage, name='balans'),
-    path('news/', newPage, name='news')
+    path('news/', newPage, name='news'),
+    path('statistika/', statistikaPage, name='statistika')
 
 
 ]

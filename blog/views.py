@@ -239,16 +239,16 @@ def newPage(request):
 
     }
     return render(request, 'news.html', contex)
-# def statistikaPage(request):
-#     products_len = len(Product.objects.all())
-#     user_ = Profile.objects.get(user=request.user)
-#     sold_orders = Order.objects.filter(complete=True)
-#     context = {
-#         "Products":products_len,
-#         'User':user_,
-#         "Sotilgsnlar"
-#
-#
-#
-#     }
-#     return render(request, 'statistika.html', context)
+def statistikaPage(request):
+    products_len = len(Product.objects.all())
+    user_ = Profile.objects.get(user=request.user)
+    filter_to_oqim = Offer.objects.filter(vendor=request.user)
+    context = {
+        "Products":products_len,
+        'User':user_,
+        "datas": filter_to_oqim,
+
+
+
+    }
+    return render(request, 'statistika.html', context)

@@ -1,9 +1,13 @@
 {% extends 'ishxonatemplate.html'%}
+
 <title>{% block title%}Statistika{% endblock title%}</title>
+
 {% block content%}
+{% load mathfilters %}
+
     <table>
         <tr>
-            <th>Sana</th>
+            <th style="margin: 50px;">Oqim</th>
             <th>Tashrif</th>
             <th>Buyurtma</th>
             <th>Sotilmadi</th>
@@ -12,7 +16,14 @@
         </tr>
         {%for data in datas%}
         <tr>
+            <td>{{data.offer_name}}</td>
+            <td>{{data.visits}}</td>
+            <td>{{data.orders}}</td>
+            <td>{{data.orders|sub:data.sold}}</td>
+            <td>{{data.sold}}</td>
 
+            <td>{{data.sold|mul:data.product.payment}}</td>
         </tr>
+        {% endfor %}
     </table>
 {% endblock content %}
